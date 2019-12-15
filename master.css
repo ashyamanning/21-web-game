@@ -1,0 +1,11 @@
+body {
+    background: url("https://66.media.tumblr.com/tumblr_m6p1ov15ob1r1xfypo1_400.gifv");
+    background-size: cover;
+    image-orientation: initial;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+h1 > img {
+    
+}
