@@ -72,25 +72,41 @@ document.addEventListener("DOMContentLoaded", async () => {
         winner();
         p.innerText = `Dealer score is: ${scores(cards)}`;
     })
+    const gameOver = () => {
+        hit.hidden = true;
+        stay.hidden = true;
+        let restart = document.createElement("button");
+        restart.innerText = "New game?";
+        win.appendChild(restart);
+        restart.addEventListener("click", () => {
+            window.location.reload();
+        })
+    }
     let win = document.querySelector("#winner");
     const winner =()=>{
         if (playerScore === 21) {
             win.innerText = "BlackJack! You win!";
-            
+            gameOver();
         } else if (playerScore > 21) {
             win.innerText = "You Busted!";
+            gameOver();
         } else if (dealerScore === 21) {
             win.innerText = "Dealer wins 21! You lose!";
+            gameOver();
         } else if (dealerScore > 21) {
             win.innerText = "Dealer busted! You win!";
+            gameOver();
         } else if (playerScore > dealerScore && playerScore < 21) {
             win.innerText = "Your score is higher! You win!";
+            gameOver();
         } else if (playerScore < dealerScore && playerScore < 21) {
             win.innerText = "Dealer wins by higher score!";
+            gameOver();
+        } else if (playerScore === dealerScore) {
+            win.innerText = "Tie game!"
+            gameOver();
         }
-
     }
-
     } catch (error) {
         console.log(error)
     }
