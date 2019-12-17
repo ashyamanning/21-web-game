@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        let start = document.querySelector("#start");
+    let start = document.querySelector("#start");
     let deckId;
     let playerScore;
-    let computerScore;
+    let dealerScore;
     let cards;
     const scores = (cards) => {
         let score = 0;
@@ -14,8 +14,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else if (card.value === "ACE") {
                 if (score > 11) {
                     card.value = 1;
+                    score += Number(card.value);
                 } else {
                     card.value = 11;
+                    score += Number(card.value);
                 }
             } else {
                 score += Number(card.value);
@@ -35,7 +37,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             player1.appendChild(image);
         })
         let p = document.querySelector("#pscore");
+        playerScore = scores(cards);
+        winner();
         p.innerText = `Your score is: ${scores(cards)}`;
+        start.hidden = true;
     })
     let hit = document.querySelector("#hit");
     hit.addEventListener("click", async () => {
@@ -48,6 +53,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             cards.push(card);
         })
         let p = document.querySelector("#pscore");
+        playerScore = scores(cards);
+        winner();
         p.innerText = `Your score is: ${scores(cards)}`;
     })
     let stay = document.querySelector("#stay");
@@ -61,10 +68,32 @@ document.addEventListener("DOMContentLoaded", async () => {
             computer.appendChild(image);
         })
         let p = document.querySelector("#cscore");
-        p.innerText = `Computer score is: ${scores(cards)}`;
+        dealerScore = scores(cards);
+        winner();
+        p.innerText = `Dealer score is: ${scores(cards)}`;
     })
+    let win = document.querySelector("#winner");
+    const winner =()=>{
+        if (playerScore === 21) {
+            win.innerText = "BlackJack! You win!";
+            
+        } else if (playerScore > 21) {
+            win.innerText = "You Busted!";
+        } else if (dealerScore === 21) {
+            win.innerText = "Dealer wins 21! You lose!";
+        } else if (dealerScore > 21) {
+            win.innerText = "Dealer busted! You win!";
+        } else if (playerScore > dealerScore && playerScore < 21) {
+            win.innerText = "Your score is higher! You win!";
+        } else if (playerScore < dealerScore && playerScore < 21) {
+            win.innerText = "Dealer wins by higher score!";
+        }
+
+    }
+
     } catch (error) {
         console.log(error)
     }
+
 
 })
