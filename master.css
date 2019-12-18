@@ -4,6 +4,7 @@ body {
     image-orientation: initial;
     height: 100vh;
     background-repeat: no-repeat;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 h1 > img {
@@ -13,4 +14,56 @@ h1 > img {
     max-width: 55%;
     size: 35%;
     justify-content: center;
+}
+
+#winner {
+    color: crimson;
+    font-size: 50px;
+}
+
+.scores {
+    font-size: 30px;
+    color: royalblue;
+}
+
+.button {
+    padding: 10px;
+    font-size: 20px;
+    color: navajowhite;
+    border: 3px solid indianred;
+    border-radius: 30px;
+    background-color: midnightblue;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+h2 > button {
+    color: navy;
+    font-size: 25px;
+    border: 3px solid indianred;
+    border-radius: 30px;
+    background-color: navajowhite;
+}
+
+h2 > button:hover {
+    cursor: pointer;
+    background-color: navy;
+    color: indianred;
+}
+
+#start:hover {
+    background-color: navajowhite;
+    color: navy;
+}
+
+#hit:hover {
+    background-color: sienna;
+    color: powderblue;
+}
+
+#stay:hover {
+    background-color: firebrick;
+    color: goldenrod;
 }
